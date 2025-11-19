@@ -1,0 +1,21 @@
+services:
+  fidelius:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fidelius:latest
+
+    # See README.md for explanation of these variables.
+    environment:
+      KEEP_MAX_DAYS: "30"
+      SECRET_MAX_CHARS: "5000"
+      RATE_LIMIT_PER_MINUTE: "30"
+      CLEANUP_INTERVAL_MINUTES: "60"
+
+    ports:
+      # You can change external port by modifying the left side of the mapping.
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+    user: "1000:1000"
+    restart: unless-stopped

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width,initial-scale=1" name="viewport"/>
+    <title>Fidelius</title>
+
+    <link href="/static/img/logo.svg" rel="icon" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700;800&display=swap"
+          rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+
+    <script src="/static/js/crypto.js"></script>
+    <script src="/static/js/ui.js" type="module"></script>
+
+</head>
+<body>
+<div class="page-wrap">
+    <div class="card">
+        <header class="header">
+            <div class="brand">
+                <div aria-hidden="true" class="logo">
+                    <img alt="Fidelius logo" height="40" src="/static/img/logo.svg" width="40"/>
+                </div>
+                <div>
+                    <div class="brand-title">Fidelius</div>
+                    <div class="small muted lh-tight">A zero-knowledge secret keeper</div>
+                </div>
+            </div>
+
+            <button aria-label="Toggle theme" aria-pressed="false" class="theme-btn" id="themeToggleBtn">
+                <svg aria-hidden="true" class="theme-icon" focusable="false" height="22" viewBox="0 0 24 24" width="22">
+                    <g class="sun">
+                        <circle cx="12" cy="12" r="4"/>
+                        <line x1="12" x2="12" y1="1" y2="3"/>
+                        <line x1="12" x2="12" y1="21" y2="23"/>
+                    </g>
+                    <path class="moon" d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79z"/>
+                </svg>
+            </button>
+        </header>
+
+        <h1 class="hero">Vault of Secrets</h1>
+
+        <div class="small muted mb-16" id="secretIdRow">Preparing…</div>
+
+        <div class="mt-6" id="controls">
+            <button class="md-btn primary" id="viewBtn">View secret</button>
+        </div>
+
+        <div aria-live="polite" class="secret-box hidden mt-24" id="secretBox" role="region">
+            <div aria-label="Secret content" class="secret-text" id="secretText" tabindex="0"></div>
+
+            <div class="flex-row mt-14">
+                <button class="md-btn ghost-plus" id="copyBtn">Copy</button>
+                <button class="md-btn ghost" id="closeSecret">Close &amp; forget</button>
+            </div>
+        </div>
+
+        <div class="helper-area mt-18">
+            <div class="small muted lh-tight" id="refreshNotice">Avoid refreshing, the secret is permanently deleted
+                after viewing.
+            </div>
+        </div>
+
+        <div aria-live="polite" class="toast" id="toast" role="status"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+.gradle/
+build/
+!gradle/wrapper/              # keep wrapper
+!gradle/wrapper/**            # allow wrapper files
+
+backend/build/
+backend/.gradle/
+backend/.kotlin/
+backend/bin/
+backend/out/
+frontend/dist/
+frontend/build/
+frontend/.cache/
+
+## Logs
+*.log
+*.log.*
+logs/
+backend/logs/
+
+## SQLite Database + Data
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Local data directory for running dev server
+data/
+backend/data/
+app/data/
+*/data/
+*.tmp
+*.temp
+tmp/
+temp/
+
+
+# Docker volumes, intermediate files
+docker/volumes/
+docker-data/
+*.pid
+
+# ShadowJar output
+backend/build/libs/*-all.jar
+backend/build/libs/*-shadow.jar
+backend/build/libs/*.jar
+
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-store/
