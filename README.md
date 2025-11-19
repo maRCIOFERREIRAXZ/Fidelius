@@ -10,7 +10,7 @@
 </table>
 
 
-Fidelius is a minimal, privacy-focused, zero-knowledge, one-time secret-sharing service.
+Fidelius is a minimal, privacy-focused, one-time secret-sharing service.
 Its name is inspired by the Fidelius Charm from *Harry Potter*, a spell so powerful that a secret becomes invisible to
 all
 but the intended recipient.
@@ -49,7 +49,7 @@ you a simple, secure way to share secrets without leaving a trace.
 3. The browser generates a random 12-byte `AES-GCM` nonce (`IV`).
 4. The browser encrypts the plaintext using `AES-GCM` with the key + nonce → ciphertext.
 5. The browser sends only {`ciphertext`, `nonce`} to the server.
-6. The server stores the ciphertext, nonce, and metadata under a generated internal ID.
+6. The server stores the ciphertext, nonce, and metadata under a generated secret ID.
 7. The browser creates a share link: `https://host/s/<id>#<key>`
 8. The browser shows this link to the user, the key remains only in the URL fragment.
 
