@@ -4,7 +4,7 @@
       <img src="https://github.com/user-attachments/assets/a8ae2799-1d32-448d-be78-613b00e77767" width="120" />
     </td>
     <td>
-      <h1>Fidelius: Zero-Knowledge One-Time Secret Sharing</h1>
+      <h1>Fidelius: Zero-Knowledge Secret Sharing</h1>
     </td>
   </tr>
 </table>
