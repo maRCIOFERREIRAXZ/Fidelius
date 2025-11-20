@@ -66,6 +66,23 @@ you a simple, secure way to share secrets without leaving a trace.
 
 ---
 
+
+## CLI Example
+
+There’s a small Python CLI tool, `fidelius.py`, available in this repo that lets you create secrets from the command line. It uses the `cryptography` library to encrypt secrets locally with AES-GCM before sending them to the server.
+
+**Usage**:
+```
+fidelius.py --server <url> [--text "your secret"] [--file path/to/file]
+Options:
+   --server, -s   The base URL of your Fidelius server (required)
+   --text, -t     Provide plaintext directly on the command line
+   --file, -f     Read plaintext from a file
+```
+
+---
+
+
 ## Self Hosting
 
 The easiest way to host Fidelius is via Docker Compose. Simply clone or download this repository, then run:
