@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td width="150">
-      <img src="https://github.com/user-attachments/assets/a8ae2799-1d32-448d-be78-613b00e77767" width="120" />
+      <img src="https://github.com/user-attachments/assets/4fe4eb70-d220-4d1b-bc52-b02ea4bb2374" width="120" />
     </td>
     <td>
       <h1>Fidelius: Zero-Knowledge Secret Sharing</h1>
