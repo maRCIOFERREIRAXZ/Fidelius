@@ -26,6 +26,10 @@ with friends or family. Traditional messaging apps don’t feel safe for this pu
 servers a message might pass through or where copies might linger. Fidelius was created to solve this problem by giving
 you a simple, secure way to share secrets without leaving a trace.
 
+#### Screenshot
+
+<img width="1200" src="https://github.com/user-attachments/assets/f0f14cb8-bde1-4b9c-a5ec-d333a71d851d" alt="Project Image">
+
 #### Demo: https://secrets.krsh.dev
 ---
 
