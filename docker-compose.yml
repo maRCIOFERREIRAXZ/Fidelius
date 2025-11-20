@@ -5,7 +5,8 @@ services:
       dockerfile: Dockerfile
     image: fidelius:latest
 
-    # See README.md for explanation of these variables.
+    # See: https://github.com/Pool-Of-Tears/Fidelius?tab=readme-ov-file#environment-variables
+    # for explanation of these variables.
     environment:
       KEEP_MAX_DAYS: "30"
       SECRET_MAX_CHARS: "5000"
