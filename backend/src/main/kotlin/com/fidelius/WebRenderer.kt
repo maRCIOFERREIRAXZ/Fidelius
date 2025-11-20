@@ -32,6 +32,9 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.slf4j.LoggerFactory
 
+/**
+ * Registers routes to serve the web frontend.
+ */
 object WebRenderer {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
@@ -43,6 +46,11 @@ object WebRenderer {
     private val indexHtml: ByteArray? = load("static/index.html")
     private val viewHtml: ByteArray? = load("static/view.html")
 
+    /**
+     * Registers routes to serve the web frontend.
+     *
+     * @param app The Ktor application to register routes on.
+     */
     fun registerFrontend(app: Application) {
         app.routing {
 

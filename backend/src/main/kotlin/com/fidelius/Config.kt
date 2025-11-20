@@ -27,6 +27,9 @@ package com.fidelius
 
 import kotlin.math.ceil
 
+/**
+ * Configuration object to hold application settings
+ */
 object Config {
     val port: Int = System.getenv("PORT")?.toIntOrNull() ?: 8080
     val dataDirPath: String = System.getenv("DATA_DIR") ?: "./data"
@@ -34,7 +37,7 @@ object Config {
 
     val keepMaxDays: Long = System.getenv("KEEP_MAX_DAYS")?.toLongOrNull() ?: 30L
     val secretMaxChars: Int = System.getenv("SECRET_MAX_CHARS")?.toIntOrNull() ?: 5000
-    val rateLimitPerMinute: Int = System.getenv("RATE_LIMIT_PER_MINUTE")?.toIntOrNull() ?: 30
+    val rateLimitPerMinute: Int = System.getenv("RATE_LIMIT_PER_MINUTE")?.toIntOrNull() ?: 10
     val cleanupIntervalMinutes: Long = System.getenv("CLEANUP_INTERVAL_MINUTES")?.toLongOrNull() ?: 60L
 
     // Calculate the maximum possible length of the ciphertext in Base64 encoding

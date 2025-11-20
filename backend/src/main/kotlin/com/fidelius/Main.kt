@@ -38,6 +38,9 @@ import java.time.Duration
 
 private val logger = LoggerFactory.getLogger("Fidelius")
 
+/**
+ * Setup Ktor application with necessary plugins and routes
+ */
 fun Application.setup() {
     install(ContentNegotiation) {
         json(Json { prettyPrint = false })

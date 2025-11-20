@@ -33,6 +33,8 @@ import java.util.concurrent.ConcurrentHashMap
 /**
  * A simple token bucket rate limiter.
  * Allows `perMinute` requests per minute per IP address.
+ *
+ * @param perMinute The number of allowed requests per minute.
  */
 class RateLimiter(private val perMinute: Int) {
     private val logger = LoggerFactory.getLogger(this::class.java)
@@ -41,6 +43,11 @@ class RateLimiter(private val perMinute: Int) {
 
     private val map = ConcurrentHashMap<String, Bucket>()
 
+    /**
+     * Attempts to consume a token for the given IP address.
+     * @param ip The IP address of the requester.
+     * @return True if the request is allowed, false if rate limit is exceeded.
+     */
     fun tryConsume(ip: String): Boolean {
         val now = Instant.now().epochSecond
         val bucket = map.computeIfAbsent(ip) { Bucket(perMinute.toDouble(), now) }

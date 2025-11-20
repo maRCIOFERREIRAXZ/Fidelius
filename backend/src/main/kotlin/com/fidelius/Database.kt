@@ -5,6 +5,9 @@ import java.io.File
 import java.sql.DriverManager
 import java.time.Instant
 
+/**
+ * Database object to manage SQLite operations
+ */
 object Database {
     private lateinit var jdbcUrl: String
     private val logger = LoggerFactory.getLogger(this::class.java)
@@ -56,6 +59,14 @@ object Database {
         }
     }
 
+    /**
+     * Insert a new secret into the database.
+     *
+     * @param id Unique identifier for the secret
+     * @param ciphertext Encrypted secret data
+     * @param nonce Nonce used for encryption
+     * @param expiresAtEpochSec Expiration time in epoch seconds
+     */
     fun insertSecret(id: String, ciphertext: String, nonce: String, expiresAtEpochSec: Long) {
         DriverManager.getConnection(jdbcUrl).use { c ->
             c.prepareStatement(
@@ -71,6 +82,12 @@ object Database {
         }
     }
 
+    /**
+     * Fetch and delete a secret by its ID.
+     *
+     * @param id Unique identifier for the secret
+     * @return Pair of ciphertext and nonce if found and not expired, null otherwise
+     */
     fun fetchAndDelete(id: String): Pair<String, String>? {
         DriverManager.getConnection(jdbcUrl).use { c ->
             c.autoCommit = false
@@ -112,6 +129,9 @@ object Database {
         }
     }
 
+    /**
+     * Cleanup expired secrets from the database.
+     */
     fun cleanupExpired() {
         DriverManager.getConnection(jdbcUrl).use { c ->
             c.prepareStatement("DELETE FROM secrets WHERE expires_at < ?").use { ps ->

@@ -10,7 +10,7 @@
 </table>
 
 
-Fidelius is a minimal, privacy-focused, one-time secret-sharing service.
+Fidelius is a minimal, privacy-focused, one-time secret-sharing app.
 Its name is inspired by the Fidelius Charm from *Harry Potter*, a spell so powerful that a secret becomes invisible to
 all
 but the intended recipient.
@@ -86,7 +86,7 @@ docker compose up -d --build
 |----------------------------|---------|----------------------------------------------------------------------------------------------------|
 | `KEEP_MAX_DAYS`            | `30`    | How many days to keep secrets. useful to prevent the server from filling with never-opened secrets |
 | `SECRET_MAX_CHARS`         | `5000`  | Maximum allowed secret text size                                                                   |
-| `RATE_LIMIT_PER_MINUTE`    | `30`    | Per-IP rate limit per minute                                                                       |
+| `RATE_LIMIT_PER_MINUTE`    | `10`    | Per-IP rate limit per minute                                                                       |
 | `CLEANUP_INTERVAL_MINUTES` | `60`    | How often the background cleanup worker should run to delete expired secrets                       |
 
 ---

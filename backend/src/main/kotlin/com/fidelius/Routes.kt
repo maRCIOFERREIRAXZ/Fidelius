@@ -35,6 +35,9 @@ import java.time.Duration
 import java.time.Instant
 import java.util.*
 
+/**
+ * Registers the API routes for creating and retrieving secrets.
+ */
 fun Application.registerRoutes() {
     val limiter = RateLimiter(Config.rateLimitPerMinute)
 
@@ -88,5 +91,11 @@ fun Application.registerRoutes() {
     }
 }
 
+/**
+ * Data class representing the request body for creating a secret.
+ *
+ * @param ciphertext The Base64-encoded ciphertext of the secret.
+ * @param nonce The Base64-encoded nonce used for encryption.
+ */
 @Serializable
 data class CreateRequest(val ciphertext: String, val nonce: String)

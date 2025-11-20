@@ -27,13 +27,25 @@ package com.fidelius
 
 import io.ktor.server.application.*
 
+/**
+ * Appends security headers to the HTTP response.
+ *
+ * @param call The application call to modify.
+ */
 object Security {
+
+    /**
+     * Appends various security headers and a CSP policy to the HTTP response.
+     *
+     * @param call The application call to modify.
+     */
     fun appendSecurityHeaders(call: ApplicationCall) {
         call.response.headers.append("X-Content-Type-Options", "nosniff")
         call.response.headers.append("X-Frame-Options", "DENY")
         call.response.headers.append("Referrer-Policy", "no-referrer")
         call.response.headers.append("Permissions-Policy", "geolocation=()")
-        // CSP policy to only allow scripts and styles from self and Google Fonts
+        // CSP policy to only allow scripts and styles from self and
+        // Google Fonts for styles and fonts.
         val csp = buildString {
             append("default-src 'none'; ")
             append("script-src 'self'; ")
