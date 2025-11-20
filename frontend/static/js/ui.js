@@ -91,7 +91,7 @@ async function init() {
     if (card) {
       const banner = createBanner(
         reason +
-        " To test on a phone use HTTPS (mkcert, ngrok) or open on localhost."
+        " To test on a local machine, use 'localhost' or set up a self-signed certificate."
       );
       card.parentNode && card.parentNode.insertBefore(banner, card);
     }

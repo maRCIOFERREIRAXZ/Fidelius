@@ -10,10 +10,12 @@ plugins {
 repositories { mavenCentral() }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core-jvm:3.3.2")
-    implementation("io.ktor:ktor-server-netty-jvm:3.3.2")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm:3.3.2")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:3.3.2")
+    val ktorVer = "3.3.2"
+
+    implementation("io.ktor:ktor-server-core-jvm:${ktorVer}")
+    implementation("io.ktor:ktor-server-netty-jvm:${ktorVer}")
+    implementation("io.ktor:ktor-server-content-negotiation-jvm:${ktorVer}")
+    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:${ktorVer}")
     implementation("org.xerial:sqlite-jdbc:3.51.0.0")
     implementation("ch.qos.logback:logback-classic:1.5.21")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
