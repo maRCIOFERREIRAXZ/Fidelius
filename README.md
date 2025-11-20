@@ -28,7 +28,7 @@ you a simple, secure way to share secrets without leaving a trace.
 
 #### Screenshot
 
-<img width="1200" src="https://github.com/user-attachments/assets/f0f14cb8-bde1-4b9c-a5ec-d333a71d851d" alt="Project Image">
+<img width="1200" src="https://github.com/user-attachments/assets/3f87a4c0-f399-4b0c-99cc-32c84cad7a4e" alt="Project Image">
 
 #### Demo: https://secrets.krsh.dev
 ---
