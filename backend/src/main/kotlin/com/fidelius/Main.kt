@@ -27,7 +27,9 @@ package com.fidelius
 
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import org.slf4j.LoggerFactory
 
 private val logger = LoggerFactory.getLogger("Fidelius")
@@ -40,28 +42,8 @@ fun main() {
 
     // Background cleanup job scope
     val bgScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
-    startCleanupJob(bgScope)
+    startCleanupJob(bgScope, logger)
 
     val server = embeddedServer(Netty, host = "0.0.0.0", port = port) { setup() }
     server.start(wait = true)
-}
-
-/**
- * Launches the periodic cleanup job to remove expired secrets from the database.
- */
-fun startCleanupJob(scope: CoroutineScope) {
-    logger.info("Starting background cleanup job every ${Config.cleanupIntervalMinutes} minutes")
-
-    scope.launch {
-        delay(5_000L) // initial delay
-        while (isActive) {
-            try {
-                logger.info("Running cleanup of expired secrets")
-                Database.cleanupExpired()
-            } catch (t: Throwable) {
-                System.err.println("[cleanup] error: ${t.message}")
-            }
-            delay(Config.cleanupIntervalMinutes * 60 * 1000L)
-        }
-    }
 }

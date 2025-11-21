@@ -18,8 +18,8 @@ import base64
 import json
 import os
 import sys
-import urllib.request
 import urllib.error
+import urllib.request
 
 # Colors
 GREEN = "\033[92m"
@@ -35,13 +35,16 @@ except ModuleNotFoundError:
     print("Install it with:\n  pip install cryptography\n")
     sys.exit(1)
 
+
 # ----------------------------------------
 
 def gen_key() -> bytes:
     return os.urandom(32)
 
+
 def key_fragment(key: bytes) -> str:
     return base64.urlsafe_b64encode(key).decode().rstrip("=")
+
 
 def encrypt(key: bytes, data: bytes):
     aes = AESGCM(key)
@@ -51,6 +54,7 @@ def encrypt(key: bytes, data: bytes):
         base64.b64encode(ct).decode(),
         base64.b64encode(nonce).decode(),
     )
+
 
 def post_json(url: str, payload: dict):
     body = json.dumps(payload).encode("utf-8")
@@ -73,6 +77,7 @@ def post_json(url: str, payload: dict):
         print(f"{YELLOW}[ERROR]{RESET} Network error: {e}", file=sys.stderr)
         sys.exit(1)
 
+
 def post_secret(server: str, ciphertext: str, nonce: str):
     url = server.rstrip("/") + "/api/v1/create"
     status, body = post_json(url, {"ciphertext": ciphertext, "nonce": nonce})
@@ -93,6 +98,7 @@ def post_secret(server: str, ciphertext: str, nonce: str):
         sys.exit(1)
 
     return sid
+
 
 def main():
     p = argparse.ArgumentParser()
@@ -136,6 +142,7 @@ def main():
     print(f"{CYAN}Secret ID:{RESET} {sid}\n")
     print(f"{CYAN}View URL:{RESET}")
     print(f"{YELLOW}{url}{RESET}\n")
+
 
 if __name__ == "__main__":
     main()

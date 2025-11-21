@@ -32,6 +32,11 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.util.logging.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 
 /**
@@ -47,7 +52,6 @@ fun Application.setup() {
     // Handle 404 errors with custom page
     install(StatusPages) {
         status(HttpStatusCode.NotFound) { call, status ->
-            // show err_404.html page for 404s
             call.respondText(
                 WebRenderer.err404Html?.toString(Charsets.UTF_8)
                     ?: "404 Not Found",
@@ -66,5 +70,25 @@ fun Application.setup() {
     routing {
         WebRenderer.registerFrontend(this@setup)
         registerRoutes() // Register API routes
+    }
+}
+
+/**
+ * Launches the periodic cleanup job to remove expired secrets from the database.
+ */
+fun startCleanupJob(scope: CoroutineScope, logger: Logger) {
+    logger.info("Starting background cleanup job every ${Config.cleanupIntervalMinutes} minutes")
+
+    scope.launch {
+        delay(5_000L) // initial delay
+        while (isActive) {
+            try {
+                logger.info("Running cleanup of expired secrets")
+                Database.cleanupExpired()
+            } catch (t: Throwable) {
+                System.err.println("[cleanup] error: ${t.message}")
+            }
+            delay(Config.cleanupIntervalMinutes * 60 * 1000L)
+        }
     }
 }

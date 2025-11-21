@@ -70,12 +70,13 @@ you a simple, secure way to share secrets without leaving a trace.
 
 ---
 
-
 ## CLI Example
 
-There’s a small Python CLI tool, `fidelius.py`, available in this repo that lets you create secrets from the command line. It uses the `cryptography` library to encrypt secrets locally with AES-GCM before sending them to the server.
+There’s a small Python CLI tool, `fidelius.py`, available in this repo that lets you create secrets from the command
+line. It uses the `cryptography` library to encrypt secrets locally with AES-GCM before sending them to the server.
 
 **Usage**:
+
 ```
 fidelius.py --server <url> [--text "your secret"] [--file path/to/file]
 Options:
@@ -85,7 +86,6 @@ Options:
 ```
 
 ---
-
 
 ## Self Hosting
 
