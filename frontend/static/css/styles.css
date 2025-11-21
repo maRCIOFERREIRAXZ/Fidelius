@@ -130,11 +130,15 @@ body {
   background: rgba(33,150,243,0.06);
   color: color-mix(in srgb, var(--text) 78%, var(--primary) 22%);
   border: 1px solid rgba(33,150,243,0.14);
-
   /* keep same sizing as other md-btn */
   padding: 12px 16px;
   border-radius: 14px;
   font-weight: 800;
+}
+
+/* remove underline from links styled as buttons */
+a.md-btn {
+    text-decoration: none;
 }
 
 /* prefer color-mix when available for more precise tinting */

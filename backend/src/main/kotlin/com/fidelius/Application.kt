@@ -25,43 +25,46 @@
 
 package com.fidelius
 
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
-import kotlinx.coroutines.*
-import org.slf4j.LoggerFactory
-
-private val logger = LoggerFactory.getLogger("Fidelius")
-
-fun main() {
-    val port = Config.port
-
-    logger.info("Initializing database at ${Config.jdbcUrl}")
-    Database.init(Config.jdbcUrl)
-
-    // Background cleanup job scope
-    val bgScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
-    startCleanupJob(bgScope)
-
-    val server = embeddedServer(Netty, host = "0.0.0.0", port = port) { setup() }
-    server.start(wait = true)
-}
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
+import io.ktor.server.application.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.plugins.statuspages.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
+import kotlinx.serialization.json.Json
 
 /**
- * Launches the periodic cleanup job to remove expired secrets from the database.
+ * Setup Ktor application with necessary plugins and routes
  */
-fun startCleanupJob(scope: CoroutineScope) {
-    logger.info("Starting background cleanup job every ${Config.cleanupIntervalMinutes} minutes")
+fun Application.setup() {
 
-    scope.launch {
-        delay(5_000L) // initial delay
-        while (isActive) {
-            try {
-                logger.info("Running cleanup of expired secrets")
-                Database.cleanupExpired()
-            } catch (t: Throwable) {
-                System.err.println("[cleanup] error: ${t.message}")
-            }
-            delay(Config.cleanupIntervalMinutes * 60 * 1000L)
+    // JSON serialization
+    install(ContentNegotiation) {
+        json(Json { prettyPrint = false })
+    }
+
+    // Handle 404 errors with custom page
+    install(StatusPages) {
+        status(HttpStatusCode.NotFound) { call, status ->
+            // show err_404.html page for 404s
+            call.respondText(
+                WebRenderer.err404Html?.toString(Charsets.UTF_8)
+                    ?: "404 Not Found",
+                ContentType.Text.Html,
+                status
+            )
         }
+    }
+
+    // Inject strict security headers
+    intercept(ApplicationCallPipeline.Setup) {
+        Security.appendSecurityHeaders(call)
+    }
+
+    // Setup routing
+    routing {
+        WebRenderer.registerFrontend(this@setup)
+        registerRoutes() // Register API routes
     }
 }

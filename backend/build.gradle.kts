@@ -16,6 +16,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:${ktorVer}")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:${ktorVer}")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:${ktorVer}")
+    implementation("io.ktor:ktor-server-status-pages-jvm:${ktorVer}")
     implementation("org.xerial:sqlite-jdbc:3.51.0.0")
     implementation("ch.qos.logback:logback-classic:1.5.21")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")

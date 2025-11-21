@@ -45,6 +45,7 @@ object WebRenderer {
 
     private val indexHtml: ByteArray? = load("static/index.html")
     private val viewHtml: ByteArray? = load("static/view.html")
+    val err404Html: ByteArray? = load("static/err_404.html")
 
     /**
      * Registers routes to serve the web frontend.
